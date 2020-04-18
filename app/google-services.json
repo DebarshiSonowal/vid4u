@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "866651433026",
+    "firebase_url": "https://vid4u-2e63d.firebaseio.com",
+    "project_id": "vid4u-2e63d",
+    "storage_bucket": "vid4u-2e63d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866651433026:android:c5e0ed2fa8c3746c8a65db",
+        "android_client_info": {
+          "package_name": "com.deb.vid4u"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866651433026-2tprgr0l372v8qjcnju5dss2n1a2agjq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtejo44NwFWgK_5CVWUHFnryO2aEy_VnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866651433026-2tprgr0l372v8qjcnju5dss2n1a2agjq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

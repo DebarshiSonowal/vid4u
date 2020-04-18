@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.deb.vid4u.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_alluser"
+        android:name="com.deb.vid4u.ui.alluser.AllUsersFragment"
+        android:label="@string/all_users"
+        tools:layout="@layout/fragment_allusers" />
+
+    <fragment
+        android:id="@+id/nav_newvideo"
+        android:name="com.deb.vid4u.ui.newvideo.NewVideoFragment"
+        android:label="@string/new_video"
+        tools:layout="@layout/fragment_newvideos" />
+    <fragment
+        android:id="@+id/nav_myprofile"
+        android:name="com.deb.vid4u.ui.myprofile.MyProfileFragment"
+        android:label="@string/my_profile"
+        tools:layout="@layout/fragment_myprofile" />
+</navigation>

@@ -1,0 +1,2 @@
+rootProject.name='vid4u'
+include ':app'
