@@ -28,10 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class NewVideoFragment extends Fragment implements dialogbox.dialogboxlistener {
-    RecyclerView mRecyclerView;
     Adapter mAdapter;
-
-    DatabaseReference mReference;
     FirebaseUser mUser;
     ArrayList<String> item;
     ArrayList<String> file;
@@ -42,7 +39,6 @@ public class NewVideoFragment extends Fragment implements dialogbox.dialogboxlis
     @Override
     public void onStart() {
         super.onStart();
-
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,13 +54,6 @@ public class NewVideoFragment extends Fragment implements dialogbox.dialogboxlis
         }
         else
             Admin = false;
-
-//        item.add("Second Card View");
-//        item.add("Third Card View");
-//        item.add("Forth Card View");
-//        item.add("Five Card View");
-//        mButton = "Download";
-
 
         View root = inflater.inflate(R.layout.fragment_newvideos, container, false);
         final RecyclerView mRecyclerView = root.findViewById(R.id.newrecycle);
@@ -98,23 +87,47 @@ public class NewVideoFragment extends Fragment implements dialogbox.dialogboxlis
             }
         });
 
-        mDatabaseReference.child("User").child(uid).child("Video").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-                {
-                    item.add(dataSnapshot1.getKey().toString());
-                    file.add(dataSnapshot1.getValue().toString());
+        if(Admin)
+        {
+
+            mDatabaseReference.child("Total files").child("Total").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                    {
+                        item.add(dataSnapshot1.getKey().toString());
+                        file.add(dataSnapshot1.getValue().toString());
+                    }
+                    mAdapter = new Adapter(getContext(),item,mButton,file,uid);
+                    mRecyclerView.setAdapter(mAdapter);
                 }
-                mAdapter = new Adapter(getContext(),item,mButton,file,uid);
-                mRecyclerView.setAdapter(mAdapter);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }else {
+
+            mDatabaseReference.child("user").child(uid).child("Video").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                    {
+                        item.add(dataSnapshot1.getKey().toString());
+                        file.add(dataSnapshot1.getValue().toString());
+                    }
+                    mAdapter = new Adapter(getContext(),item,mButton,file,uid);
+                    mRecyclerView.setAdapter(mAdapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
 
 //        if(Admin)
 //            {
@@ -180,23 +193,47 @@ public class NewVideoFragment extends Fragment implements dialogbox.dialogboxlis
     private void loadaudios() {
         item.clear();
         file.clear();
-        mDatabaseReference.child("User").child(uid).child("Audio").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-                {
-                    item.add(dataSnapshot1.getKey());
-                    file.add(dataSnapshot1.getValue().toString());
+
+        if(Admin)
+        {
+            mDatabaseReference.child("Total files").child("Audio").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                    {
+                        item.add(dataSnapshot1.getKey());
+                        file.add(dataSnapshot1.getValue().toString());
+                    }
+                    mAdapter.notifyDataSetChanged();
                 }
-                mAdapter.notifyDataSetChanged();
-            }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+        else{
+            mDatabaseReference.child("User").child(uid).child("Audio").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                    {
+                        item.add(dataSnapshot1.getKey());
+                        file.add(dataSnapshot1.getValue().toString());
+                    }
+                    mAdapter.notifyDataSetChanged();
+                }
 
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
+
+
 
 
     }
@@ -205,26 +242,41 @@ public class NewVideoFragment extends Fragment implements dialogbox.dialogboxlis
 
         item.clear();
         file.clear();
-        mDatabaseReference.child("User").child(uid).child("Video").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    item.add(dataSnapshot1.getKey());
-                    file.add(dataSnapshot1.getValue().toString());
-                    Log.d("Data",dataSnapshot1.getKey());
+        if (Admin) {
+            mDatabaseReference.child("Total files").child("Video").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        item.add(dataSnapshot1.getKey());
+                        file.add(dataSnapshot1.getValue().toString());
+                    }
+                    mAdapter.notifyDataSetChanged();
                 }
-                mAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
+                }
+            });
+        } else {
+            mDatabaseReference.child("User").child(uid).child("Video").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        item.add(dataSnapshot1.getKey());
+                        file.add(dataSnapshot1.getValue().toString());
+                    }
+                    mAdapter.notifyDataSetChanged();
+                }
 
-        });
-        mAdapter.notifyDataSetChanged();
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
-
 //    private String niceLink (String filename,String uid1){
 //        String link;
 //        // Points to the root reference

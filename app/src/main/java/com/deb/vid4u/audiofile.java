@@ -222,50 +222,65 @@ public class audiofile extends AppCompatActivity {
                 Uri downloadUrl = urlTask.getResult();
                 final String url = String.valueOf(downloadUrl);
                 DatabaseReference reference = mDatabase.getReference();
-                reference.child("User").child(muid).child("total") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                reference.child("User").child(muid).child("Audio") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                reference.child("Total files").child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                reference.child("user").child(muid).child("Audio") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+                if(Admin)
+                {
+                    reference.child("User").child(muid).child("Audio").child(filename).setValue(url);
+                    reference.child("User").child(muid).child("Total").child(filename).setValue(url);
+//                    reference.child("user").child(uid).child("Audio").child(filename).setValue(url);
+
+                }
+                else{
+                    reference.child("user").child(muid).child("Audio").child(filename).setValue(url);
+                    reference.child("Total files").child("Audio").child(filename).setValue(url);
+                    reference.child("Total files").child("Total").child(filename).setValue(url);
+                }
+
+//                reference.child("User").child(muid).child("total") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful())
+//                        {
+//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
+//                        }
+//                        else
+//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                reference.child("User").child(muid).child("Audio") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful())
+//                        {
+//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
+//                        }
+//                        else
+//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                reference.child("Total files").child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful())
+//                        {
+//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
+//                        }
+//                        else
+//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                reference.child("user").child(muid).child("Audio") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful())
+//                        {
+//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
+//                        }
+//                        else
+//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+                finish();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

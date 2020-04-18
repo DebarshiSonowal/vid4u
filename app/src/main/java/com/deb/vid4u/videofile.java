@@ -235,6 +235,7 @@ public class videofile extends AppCompatActivity {
                 {
                     reference.child("User").child(muid).child("Video").child(filename).setValue(url);
                     reference.child("user").child(uid).child("Video").child(filename).setValue(url);
+                    reference.child("User").child(muid).child("Total").child(filename).setValue(url);
 
                 }
                 else{

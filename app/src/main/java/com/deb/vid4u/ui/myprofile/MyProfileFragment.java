@@ -92,37 +92,59 @@ public class MyProfileFragment extends Fragment {
 //
 //            }
 //        });
-
-
-
-        toor.addValueEventListener(new ValueEventListener() {
-                                       @Override
-                                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                           for (DataSnapshot item : dataSnapshot.getChildren()) {
-//                                               if (item.getKey().equals("1xfcI3rEV8h7f6QHefIABl7Fpwq2")) {
-                                                   for (DataSnapshot dataSnapshot1 : item.getChildren()) {
-                                                       if (dataSnapshot1.getKey().equals("Email")) {
-                                                           email = (String) dataSnapshot1.getValue();
-                                                           emlid.setText(email);
-                                                       }
-                                                       if (dataSnapshot1.getKey().equals("Username")) {
-                                                           user = (String) dataSnapshot1.getValue();
-                                                           usnm.setText(user);
-                                                       }
-                                                   }
-                                               }
-
-//                                           }
-//                user = (String) dataSnapshot.child("Username").getValue();
-//                email = (String) dataSnapshot.child("Email").getValue();
-//            }
-                                       }
+        toor.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {
+                    if (dataSnapshot1.getKey().equals("Email")) {
+                        email = (String) dataSnapshot1.getValue();
+                        emlid.setText(email);
+                    }
+                    if (dataSnapshot1.getKey().equals("Username")) {
+                        user = (String) dataSnapshot1.getValue();
+                        usnm.setText(user);
+                    }
+                }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+
+
+
+//        toor.addValueEventListener(new ValueEventListener() {
+//                                       @Override
+//                                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                           for (DataSnapshot item : dataSnapshot.getChildren()) {
+////                                               if (item.getKey().equals("1xfcI3rEV8h7f6QHefIABl7Fpwq2")) {
+//                                                   for (DataSnapshot dataSnapshot1 : item.getChildren()) {
+//                                                       if (dataSnapshot1.getKey().equals("Email")) {
+//                                                           email = (String) dataSnapshot1.getValue();
+//                                                           emlid.setText(email);
+//                                                       }
+//                                                       if (dataSnapshot1.getKey().equals("Username")) {
+//                                                           user = (String) dataSnapshot1.getValue();
+//                                                           usnm.setText(user);
+//                                                       }
+//                                                   }
+//                                               }
+//
+////                                           }
+////                user = (String) dataSnapshot.child("Username").getValue();
+////                email = (String) dataSnapshot.child("Email").getValue();
+////            }
+//                                       }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
         return root;
     }

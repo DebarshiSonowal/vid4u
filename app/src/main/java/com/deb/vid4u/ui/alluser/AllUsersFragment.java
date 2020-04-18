@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,6 +29,7 @@ public class AllUsersFragment extends Fragment {
     ArrayList<Integer> upld;
     ArrayList<Integer> dwnld;
     DatabaseReference root,local,store;
+
     FirebaseDatabase mFirebaseDatabase;
     Integer i;
     Boolean flag = true;
@@ -96,10 +98,12 @@ public class AllUsersFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_allusers, container, false);
         final RecyclerView mRecyclerView = root.findViewById(R.id.recyclerView);
+//        final  SearchView mSearchView = root.findViewById(R.id.search);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
         upld.clear();
+
         local.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
