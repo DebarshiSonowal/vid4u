@@ -1,6 +1,7 @@
 package com.deb.vid4u;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     String a;
     FirebaseUser mUser;
     Boolean Admin;
+    Toolbar toolbar;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -52,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
             MenuItem nav_item2 = menuNav.findItem(R.id.nav_alluser);
             nav_item2.setEnabled(false);
         }
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -70,10 +74,14 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_alluser, R.id.nav_newvideo, R.id.nav_myprofile)
                 .setDrawerLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -97,4 +105,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

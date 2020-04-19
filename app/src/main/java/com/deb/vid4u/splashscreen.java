@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
@@ -20,6 +21,7 @@ public class splashscreen extends AppCompatActivity {
 
         //This is additional feature, used to run a progress bar
         splashProgress = findViewById(R.id.splashProgress);
+        splashProgress.getIndeterminateDrawable().setColorFilter(Color.parseColor("#FFFFFF"), android.graphics.PorterDuff.Mode.MULTIPLY);
         playProgress();
 
         //Code to start timer and take action after the timer ends

@@ -1,6 +1,8 @@
 package com.deb.vid4u.ui.home;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.deb.vid4u.MainActivity;
 import com.deb.vid4u.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +48,11 @@ public class HomeFragment extends Fragment {
         final  TextView downmy = root.findViewById(R.id.ttldwldtoday);
         final TextView payment = root.findViewById(R.id.ttlpay);
         local = FirebaseDatabase.getInstance().getReference();
+        MainActivity main = (MainActivity)getActivity();
+//You can access all public variable and methods of MainActivity.
+//simply call
+        main.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3700B3")));
+        main.getWindow().setStatusBarColor(Color.parseColor("#3700B3"));
         local.child("Total files").addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -132,8 +140,11 @@ public class HomeFragment extends Fragment {
                             }
                         }
                     }
-
+                  if(nText.getText().toString().equals("")){
+                      nText.setText("0");
+                  }
                 }
+
             }
 
             @Override

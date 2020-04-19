@@ -235,51 +235,6 @@ public class audiofile extends AppCompatActivity {
                     reference.child("Total files").child("Audio").child(filename).setValue(url);
                     reference.child("Total files").child("Total").child(filename).setValue(url);
                 }
-
-//                reference.child("User").child(muid).child("total") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful())
-//                        {
-//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                reference.child("User").child(muid).child("Audio") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful())
-//                        {
-//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                reference.child("Total files").child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful())
-//                        {
-//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                reference.child("user").child(muid).child("Audio") .child(filename).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful())
-//                        {
-//                            Toast.makeText(audiofile.this,"File Successfully uploaded",Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                            Toast.makeText(audiofile.this,"File not uploaded",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
                 finish();
             }
         }).addOnFailureListener(new OnFailureListener() {

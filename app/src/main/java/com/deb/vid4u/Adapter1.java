@@ -36,7 +36,7 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         String item_name1 = data.get(position);
 
-//            position = position + 1;
+
 
 
         try {

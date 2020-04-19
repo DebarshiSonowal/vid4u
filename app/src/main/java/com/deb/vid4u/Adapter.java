@@ -32,7 +32,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private String btntitle,uid;
     private Button mButton;
     private Date mDate = new Date();
-    Locale locale;
+
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy",Locale.getDefault());
 
     public Adapter(Context context, List<String> data, String btntitle,List<String>link,String uid){
@@ -66,7 +66,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 DownloadManager downloadmanager = (DownloadManager) context.
                         getSystemService(Context.DOWNLOAD_SERVICE);
                 Uri uri = Uri.parse(link.get(position));
-//                Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/videofiy.appspot.com/o/Uploads%2FVideo%2FOspHadu29BSdph2zUbr8jzVLOg22%2Fno?alt=media&token=3934536d-8f46-473d-908e-2789e3be1a04");
                 DownloadManager.Request request = new DownloadManager.Request(uri);
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS , data.get(position));
@@ -83,18 +82,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     context.startActivity(m);
                 }
 
-//                file nf = new file(sdf.format(mDate),item_name1);
-//                DownloadManager downloadmanager = (DownloadManager) context.
-//                        getSystemService(Context.DOWNLOAD_SERVICE);
-//                Uri uri = Uri.parse(link.get(position));
-////                Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/videofiy.appspot.com/o/Uploads%2FVideo%2FOspHadu29BSdph2zUbr8jzVLOg22%2Fno?alt=media&token=3934536d-8f46-473d-908e-2789e3be1a04");
-//                DownloadManager.Request request = new DownloadManager.Request(uri);
-//                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-//                request.setDestinationInExternalFilesDir(context, DIRECTORY_DOWNLOADS , data.get(position));
-//                downloadmanager.enqueue(request);
-//                FirebaseDatabase.getInstance().getReference().child("Downloaded").child(uid).push().setValue(nf);
-//                FirebaseDatabase.getInstance().getReference(). child("user").child(uid).child("Downloaded").push().setValue(nf);
-//                FirebaseDatabase.getInstance().getReference(). child("Total files").child("Downloaded").push().setValue(nf);
+
             }
         });
     }
@@ -105,21 +93,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public int getItemCount() {
         return data.size();
     }
-//    private void downloadManager(String url) {
-//        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-//        request.setDescription("download");
-//        request.setTitle(""+songtitle);
-//// in order for this if to run, you must use the android 3.2 to compile your app
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-//            request.allowScanningByMediaScanner();
-//            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-//        }
-//        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, ""+songtitle+".mp4");
-//
-//// get download service and enqueue file
-//        DownloadManager manager = (DownloadManager) getA.getSystemService(Context.DOWNLOAD_SERVICE);
-//        manager.enqueue(request);
-//    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView title,amount;

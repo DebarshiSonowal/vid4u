@@ -12,6 +12,9 @@
         tools:layout="@layout/fragment_home">
 
 
+        <action
+            android:id="@+id/action_nav_home_to_nav_alluser"
+            app:destination="@id/nav_alluser" />
     </fragment>
 
 
@@ -19,13 +22,26 @@
         android:id="@+id/nav_alluser"
         android:name="com.deb.vid4u.ui.alluser.AllUsersFragment"
         android:label="@string/all_users"
-        tools:layout="@layout/fragment_allusers" />
+        android:theme="@style/App2"
+        tools:layout="@layout/fragment_allusers" >
+        <action
+            android:id="@+id/action_nav_alluser_to_nav_newvideo"
+            app:destination="@id/nav_newvideo" />
+        <action
+            android:id="@+id/action_nav_alluser_to_nav_newvideo2"
+            app:destination="@id/nav_newvideo" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_newvideo"
         android:name="com.deb.vid4u.ui.newvideo.NewVideoFragment"
         android:label="@string/new_video"
-        tools:layout="@layout/fragment_newvideos" />
+        android:theme="@style/App2"
+        tools:layout="@layout/fragment_newvideos" >
+        <action
+            android:id="@+id/action_nav_newvideo_to_nav_myprofile"
+            app:destination="@id/nav_myprofile" />
+    </fragment>
     <fragment
         android:id="@+id/nav_myprofile"
         android:name="com.deb.vid4u.ui.myprofile.MyProfileFragment"

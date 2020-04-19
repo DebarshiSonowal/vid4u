@@ -1,5 +1,7 @@
 package com.deb.vid4u.ui.alluser;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.deb.vid4u.Adapter1;
+import com.deb.vid4u.MainActivity;
 import com.deb.vid4u.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,11 +33,6 @@ public class AllUsersFragment extends Fragment {
     ArrayList<Integer> dwnld;
     DatabaseReference root,local,store;
 
-    FirebaseDatabase mFirebaseDatabase;
-    Integer i;
-    Boolean flag = true;
-    Integer m;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,57 +46,15 @@ public class AllUsersFragment extends Fragment {
         item = new ArrayList<>();
         dwnld = new ArrayList<>();
 
-//        store.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//        store.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-//                {
-//                    if(dataSnapshot1.getKey().equals("Video"))
-//                    {
-//
-//                        upld.add((int)dataSnapshot1.getChildrenCount());
-//                        Log.d("Upload", String.valueOf(dataSnapshot1.getChildrenCount()));
-//
-//                    }
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
-
-
-//        upld = new ArrayList<>();
-
-
-
-
-        
-
-
-
 
         View root = inflater.inflate(R.layout.fragment_allusers, container, false);
         final RecyclerView mRecyclerView = root.findViewById(R.id.recyclerView);
 //        final  SearchView mSearchView = root.findViewById(R.id.search);
+        MainActivity main = (MainActivity)getActivity();
+//You can access all public variable and methods of MainActivity.
+//simply call
+        main.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#1C1C1E")));
+        main.getWindow().setStatusBarColor(Color.parseColor("#1C1C1E"));
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -125,11 +81,6 @@ public class AllUsersFragment extends Fragment {
                             if(("Downloaded").equals(dataSnapshot2.getKey())){
                                     dwnld.add((int)dataSnapshot2.getChildrenCount());
                             }
-
-//                            if(!dataSnapshot1.hasChild("Video")){
-//                                upld.add(0);
-//                              Log.d("Flag Value 3", "No  0");
-//                            }
                         }
                     if(item.size() != upld.size())
                     {
@@ -151,7 +102,6 @@ public class AllUsersFragment extends Fragment {
 
             }
         });
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return root;
     }

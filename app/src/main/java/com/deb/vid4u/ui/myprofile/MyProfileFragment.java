@@ -1,5 +1,7 @@
 package com.deb.vid4u.ui.myprofile;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.deb.vid4u.MainActivity;
 import com.deb.vid4u.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +46,11 @@ public class MyProfileFragment extends Fragment {
         Toast.makeText(getContext(),uid,Toast.LENGTH_SHORT).show();
         View root = inflater.inflate(R.layout.fragment_myprofile, container, false);
 //        final TextView textView = root.findViewById(R.id.text_home);
+        MainActivity main = (MainActivity)getActivity();
+//You can access all public variable and methods of MainActivity.
+//simply call
+        main.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3700B3")));
+        main.getWindow().setStatusBarColor(Color.parseColor("#3700B3"));
         final  TextView usnm = root.findViewById(R.id.usernm);
         final  TextView emlid = root.findViewById(R.id.emailid);
 //        FirebaseDatabase.getInstance().getReference().child("qwert").child("1d1r2f2").addValueEventListener(new ValueEventListener() {

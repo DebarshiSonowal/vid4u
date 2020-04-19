@@ -14,13 +14,13 @@
         android:top="0dp" />
     <stroke
         android:width="0.5dp"
-        android:color="@color/colorPrimaryDark"
+        android:color="#1C1C1E"
 
         />
-   <gradient
-
-       android:startColor="@color/colorPrimary"
-       android:angle="-90"/>
+    <gradient
+        android:startColor="#1C1C1E"
+        android:endColor="#313134"
+        android:angle="-90"/>
 
 
 </shape>
