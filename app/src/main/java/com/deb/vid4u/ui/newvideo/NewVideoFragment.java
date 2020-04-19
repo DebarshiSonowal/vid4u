@@ -119,6 +119,7 @@ public class NewVideoFragment extends Fragment implements dialogbox.dialogboxlis
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
+//        mCard.setBackgroundResource(R.drawable.icon_plus_circle);
         mCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

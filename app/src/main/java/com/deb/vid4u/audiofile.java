@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -84,7 +87,9 @@ public class audiofile extends AppCompatActivity {
         selectfile = findViewById(R.id.selectbtn);
         uploadfile = findViewById(R.id.upload);
         notificatiom = findViewById(R.id.notify);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#1C1C1E")));
+        getWindow().setStatusBarColor(Color.parseColor("#1C1C1E"));
         if(Admin)
         {
             mSpinner.setEnabled(true);

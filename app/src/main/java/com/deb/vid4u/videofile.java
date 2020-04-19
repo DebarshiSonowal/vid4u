@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -80,7 +83,9 @@ public class videofile extends AppCompatActivity {
 
         mStorage= FirebaseStorage.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#1C1C1E")));
+        getWindow().setStatusBarColor(Color.parseColor("#1C1C1E"));
         mSpinner = findViewById(R.id.spinner);
         selectfile = findViewById(R.id.selectbtn);
         mEditText = findViewById(R.id.filename);

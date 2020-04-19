@@ -1,5 +1,6 @@
 package com.deb.vid4u;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
         return new Adapter1.ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         String item_name1 = data.get(position);
@@ -47,8 +49,8 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
         }
         String dwnld1 = dwnld.get(position).toString();
 
-        viewHolder.upload.setText(upld1);
-        viewHolder.download.setText(dwnld1);
+        viewHolder.upload.setText("Uploads- "+upld1);
+        viewHolder.download.setText("Downloads- "+dwnld1);
         viewHolder.name.setText(item_name1);
     }
     @Override

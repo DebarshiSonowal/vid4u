@@ -25,8 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".login"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".signup"  android:theme="@style/AppTheme"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+        <activity android:name=".signup"  android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
         <activity android:name=".videofile" android:theme="@style/AppTheme"/>
         <activity android:name=".audiofile" android:theme="@style/AppTheme"/>
         <activity

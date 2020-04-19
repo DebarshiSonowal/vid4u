@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,13 +38,7 @@ public class dialogbox extends DialogFragment {
         AlertDialog.Builder builder =new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialogbox,null);
-
-        builder.setView(view).setTitle("Upload").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
+        builder.setView(view);
 
         aubtn = view.findViewById(R.id.audiobtn);
         vdbtn = view.findViewById(R.id.videobtn);
